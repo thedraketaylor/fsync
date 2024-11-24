@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package fsync;
+option go_package = "fsync";
+
+service FileWatcher {
+  rpc WatchFiles(WatchRequest) returns (stream FileEvent) {}
+}
+
+message WatchRequest {
+  string directory_path = 1;
+}
+
+message FileEvent {
+  string path = 1;
+  EventType event_type = 2;
+}
+
+enum EventType {
+  UNKNOWN = 0;
+  CREATE = 1;
+  MODIFY = 2;
+  DELETE = 3;
+}
