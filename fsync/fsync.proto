@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package fsync;
-option go_package = "fsync";
+option go_package = "github.com/thedraketaylor/fsync";
 
 service FileWatcher {
   rpc WatchFiles(WatchRequest) returns (stream FileEvent) {}
